@@ -26,7 +26,7 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 	
-	@RequestMapping(value = "/produtos", method =  RequestMethod.GET)
+	@RequestMapping(value = "/produtos/all", method =  RequestMethod.GET)
 	@ApiOperation(value = "Listagem de produtos")
 	public List<Produto> list() {
 		List<Produto> produtos = produtoRepository.findAll();
@@ -34,7 +34,7 @@ public class ProdutoController {
 		return produtos;
 	}
 	
-	@RequestMapping(value = "/find/{id}", method =  RequestMethod.GET)
+	@RequestMapping(value = "/produtos/find/{id}", method =  RequestMethod.GET)
 	@ApiOperation(value = "Procura de produtos")
 	public ResponseEntity find(@PathVariable int id) {
 	    
@@ -47,7 +47,7 @@ public class ProdutoController {
 	    
 	  }
 	
-	@RequestMapping(value = "/create", method =  RequestMethod.POST)
+	@RequestMapping(value = "/produtos/create", method =  RequestMethod.POST)
 	@ApiOperation(value = "Cadastro de produtos")
 	public ResponseEntity<Produto> create( @RequestBody Produto produtoBody) {
 		Produto produto = produtoRepository.save(produtoBody);
@@ -55,7 +55,7 @@ public class ProdutoController {
 		 return new ResponseEntity<Produto>(produto, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/update/{id}", method =  RequestMethod.PUT)
+	@RequestMapping(value = "/produtos/{id}", method =  RequestMethod.PUT)
 	@ApiOperation(value = "Atualização de produtos")
     public ResponseEntity<Produto> update(@PathVariable(value = "id") int id, @RequestBody Produto newProduto)
     {
@@ -79,7 +79,7 @@ public class ProdutoController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 	
-	 @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	 @RequestMapping(value = "/produtos/{id}", method = RequestMethod.DELETE)
 	 @ApiOperation(value = "Remoção de produtos")
 	    public ResponseEntity<Object> delete(@PathVariable(value = "id") int id)
 	    {
