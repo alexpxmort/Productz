@@ -1,12 +1,15 @@
 package com.lex.productz.models;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity(name = "produtos")
 public class Produto {
@@ -30,26 +33,14 @@ public class Produto {
 	private int quantidade;
 	
 	@Column(name=  "created_at")
-	private Date createdAt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	private LocalDateTime  createdAt;
 	
 	@Column(name=  "updated_at")
-	private Date updateddAt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	private LocalDateTime  updateddAt;
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdateddAt() {
-		return updateddAt;
-	}
-
-	public void setUpdateddAt(Date updateddAt) {
-		this.updateddAt = updateddAt;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -57,6 +48,22 @@ public class Produto {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdateddAt() {
+		return updateddAt;
+	}
+
+	public void setUpdateddAt(LocalDateTime updateddAt) {
+		this.updateddAt = updateddAt;
 	}
 
 	public String getNome() {
