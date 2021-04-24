@@ -14,6 +14,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.lex.productz.controller.ProdutoController;
 import com.lex.productz.exceptions.ProdutoNotFoundException;
 import com.lex.productz.models.Produto;
 import com.lex.productz.repository.ProdutoRepository;
@@ -27,12 +28,14 @@ public class ProdutoControllerTest {
 	@Autowired
 	private ProdutoRepository produtoRepositoryTest;
 	
+
 	@Test
 	@Before(value = "")
 	public void findTest()  throws ProdutoNotFoundException{
-		Optional<Produto>  p = produtoRepositoryTest.findById(1);
+		int id = 1;
+		Optional<Produto>  p = produtoRepositoryTest.findById(id);
 		
-		assertEquals(1,p.get().getId());
+		assertEquals(id,p.get().getId());
 		assertEquals("151515",p.get().getCodigoBarra());
 	}
 	
@@ -40,12 +43,13 @@ public class ProdutoControllerTest {
 	@Test
 	@After
 	public void deleteTest()  throws ProdutoNotFoundException{
-		Optional<Produto>  p = produtoRepositoryTest.findById(1);
+		int id = 1;
+		Optional<Produto>  p = produtoRepositoryTest.findById(id);
 		
 		if(p.isPresent()) {
 			produtoRepositoryTest.delete(p.get());
 			
-			Optional<Produto>  pDel = produtoRepositoryTest.findById(1);
+			Optional<Produto>  pDel = produtoRepositoryTest.findById(id);
 			
 			assertFalse(pDel.isPresent());
 			

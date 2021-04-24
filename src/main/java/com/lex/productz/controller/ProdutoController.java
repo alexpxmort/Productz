@@ -36,7 +36,7 @@ public class ProdutoController {
 	
 	@RequestMapping(value = "/find/{id}", method =  RequestMethod.GET)
 	@ApiOperation(value = "Procura de produtos")
-	ResponseEntity find(@PathVariable int id) {
+	public ResponseEntity find(@PathVariable int id) {
 	    
 	    Optional<Produto> produto =  produtoRepository.findById(id);
 	    
