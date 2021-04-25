@@ -1,5 +1,5 @@
 # Productz
-A rest api spring boot
+Uma rest api spring boot
 
 
 rodar o script de database na pasta sql o arquivo init.sql
