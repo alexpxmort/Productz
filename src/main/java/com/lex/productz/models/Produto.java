@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -23,30 +24,32 @@ public class Produto {
 	@Column(nullable = true)
 	private String descricao;
 	
-	@Column(name = "codigo_barra" , nullable = false)
+	@Column(name = "codigo_barra")
 	private String codigoBarra;
 	
-	@Column(nullable = false)
+	@Column
 	private String categoria;
 	
 	@Column(nullable = true)
 	private int quantidade;
 	
 	@Column(name=  "created_at")
+	@CreationTimestamp
 	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalDateTime  createdAt;
 	
 	@Column(name=  "updated_at")
+	@CreationTimestamp
 	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalDateTime  updateddAt;
 
 	
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
