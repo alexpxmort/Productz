@@ -7,5 +7,5 @@ import com.lex.productz.models.Produto;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto,Integer> {
-
+	
 }

@@ -9,13 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity(name = "produtos")
 public class Produto {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Column
@@ -42,6 +43,8 @@ public class Produto {
 	@CreationTimestamp
 	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalDateTime  updateddAt;
+	
+	
 
 	
 
